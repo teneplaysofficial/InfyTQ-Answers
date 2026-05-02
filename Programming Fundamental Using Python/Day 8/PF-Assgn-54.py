@@ -9,22 +9,19 @@ The length of the strings should be the same.
 #PF-Assgn-54
 def check_anagram(data1,data2):
     #start writing your code here
-    l1=[]
-    l2=[]
-    for i in data1.lower():
-        l1.append(i)
-    for i in data2.lower():
-        l2.append(i)
-    c=0
-    if len(data1)==len(data2):
-        for i in range(0,len(data1)):
-            if l1[i] in l2 and l1[i]!=l2[i]:
-                c=c+1 
-    else:
+    data1 = data1.lower()
+    data2 = data2.lower()
+
+    if len(data1) != len(data2):
         return False
-    if len(data1)==c:
-        return True
-    else:
+
+    if sorted(data1) != sorted(data2):
         return False
+
+    for i in range(len(data1)):
+        if data1[i] == data2[i]:
+            return False
+
+    return True
 
 print(check_anagram("About","table"))
